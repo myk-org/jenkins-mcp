@@ -49,13 +49,14 @@ Add this server to your MCP client configuration. For Claude Desktop, add to you
       "command": "uv",
       "args": [
         "run",
-        "/path/to/jenkins-mcp/.venv/bin/python",
+        "--directory",
+        "/path/to/jenkins-mcp",
         "/path/to/jenkins-mcp/mcp_server/main.py"
       ],
       "env": {
-        "JENKINS_URL": "https://your-jenkins-server.com",
-        "JENKINS_USERNAME": "your-username",
-        "JENKINS_PASSWORD": "your-api-token"  # pragma: allowlist secret
+        "JENKINS_URL": "${JENKINS_URL}",
+        "JENKINS_USERNAME": "${JENKINS_USERNAME}",
+        "JENKINS_PASSWORD": "${JENKINS_PASSWORD}"
       }
     }
   }
@@ -77,7 +78,7 @@ Get Jenkins server version information.
 
 **Example:**
 
-```
+```text
 Jenkins version: 2.414.1
 ```
 
@@ -198,7 +199,6 @@ Get a list of all Jenkins jobs.
 
 For issues and questions:
 
-- Check the troubleshooting section above
 - Review Jenkins server logs
 - Verify network connectivity and permissions
 - Open an issue on GitHub for bugs or feature requests
